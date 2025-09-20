@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Егорова Екатерина">
+  <title>Алгоритм Евклида</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link href="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fdist%2Freset%2Ecss" rel="stylesheet">
+  <link href="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fdist%2Freveal%2Ecss" rel="stylesheet">
+  <style>
+.reveal .sourceCode { 
+overflow: visible;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <link href="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fdist%2Ftheme%2Fbeige%2Ecss" rel="stylesheet" id="theme">
+  
+  
+  
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Алгоритм Евклида</h1>
+  <p class="author">Егорова Екатерина</p>
+  <p class="institute">Российский Университет Дружбы Народов</p>
+  <p class="date">3 октября, 2025, Москва, Россия</p>
+</section>
+
+<section>
+<section id="цели-и-задачи" class="title-slide slide level1">
+<h1>Цели и задачи</h1>
+
+</section>
+<section id="цель-лабораторной-работы" class="slide level2">
+<h2>Цель лабораторной работы</h2>
+<p>Изучение алгоритма Евклида нахождения НОД и его вариаций.</p>
+</section></section>
+<section>
+<section id="выполнение-лабораторной-работы" class="title-slide slide level1">
+<h1>Выполнение лабораторной работы</h1>
+
+</section>
+<section id="наибольший-общий-делитель" class="slide level2">
+<h2>Наибольший общий делитель</h2>
+<p>Наибольший общий делитель (НОД) – это число, которое делит без
+остатка два числа и делится само без остатка на любой другой делитель
+данных двух чисел. Проще говоря, это самое большое число, на которое
+можно без остатка разделить два числа, для которых ищется НОД.</p>
+</section>
+<section id="алгоритм-евклида" class="slide level2">
+<h2>Алгоритм Евклида</h2>
+<ul>
+<li>Вход. Целые числа <span class="math inline"><em>a</em>, <em>b</em>; 0 &lt; <em>b</em> &lt; <em>a</em></span>.</li>
+<li>Выход. <span class="math inline"><em>d</em>=</span> НОД<span class="math inline">(<em>a</em>,<em>b</em>)</span>.</li>
+</ul>
+<ol type="1">
+<li>Положить <span class="math inline"><em>r</em><sub>0</sub> = <em>a</em></span>, <span class="math inline"><em>r</em><sub>1</sub> = <em>b</em></span>, <span class="math inline"><em>i</em> = 1</span>.</li>
+<li>Найти остаток <span class="math inline"><em>r</em><sub><em>i</em></sub> + 1</span> от
+деления <span class="math inline"><em>r</em><sub><em>i</em></sub>–1</span> на <span class="math inline"><em>r</em><sub><em>i</em></sub></span>.</li>
+<li>Если <span class="math inline"><em>r</em><sub><em>i</em></sub> + 1 = 0</span>, то
+положить <span class="math inline"><em>d</em> = <em>r</em><sub><em>i</em></sub></span>.
+В противном случае положить <span class="math inline"><em>i</em> = <em>i</em> + 1</span> и вернуться на
+шаг 2.</li>
+<li>Результат: <span class="math inline"><em>d</em></span>.</li>
+</ol>
+</section>
+<section id="бинарный-алгоритм-евклида" class="slide level2">
+<h2>Бинарный алгоритм Евклида</h2>
+<ul>
+<li>Вход. Целые числа <span class="math inline"><em>a</em>, <em>b</em>; 0 &lt; <em>b</em> ≤ <em>a</em></span>.</li>
+<li>Выход. <span class="math inline"><em>d</em>=</span> HOД<span class="math inline">(<em>a</em>,<em>b</em>)</span>.</li>
+</ul>
+<ol type="1">
+<li>Положить <span class="math inline"><em>g</em> = 1</span>.</li>
+<li>Пока оба числа <span class="math inline"><em>a</em></span> и <span class="math inline"><em>b</em></span> четные, выполнять <span class="math inline"><em>a</em> = <em>a</em>/2, <em>b</em> = <em>b</em>/2, <em>g</em> = 2<em>g</em></span>
+до получения хотя бы одного нечетного значения <span class="math inline"><em>a</em></span> или <span class="math inline"><em>b</em></span>.</li>
+<li>Положить <span class="math inline"><em>u</em> = <em>a</em>, <em>v</em> = <em>b</em></span>.</li>
+<li>Пока <span class="math inline"><em>u</em> ≠ 0</span>, выполнять
+следующие действия.
+<ul>
+<li>Пока <span class="math inline"><em>u</em></span> четное, полагать
+<span class="math inline"><em>u</em> = <em>u</em>/2</span>.</li>
+<li>Пока <span class="math inline"><em>v</em></span> четное, полагать
+<span class="math inline"><em>v</em> = <em>v</em>/2</span>.</li>
+<li>При <span class="math inline"><em>u</em> ≥ <em>v</em></span>
+положить <span class="math inline"><em>u</em> = <em>u</em> − <em>v</em></span>. В
+противном случае положить <span class="math inline"><em>v</em> = <em>v</em>–<em>u</em></span>.</li>
+</ul></li>
+<li>Положить <span class="math inline"><em>d</em> = <em>g</em><em>v</em></span>.</li>
+<li>Результат: <span class="math inline"><em>d</em></span></li>
+</ol>
+</section>
+<section id="расширенный-алгоритм-евклида" class="slide level2">
+<h2>Расширенный алгоритм Евклида</h2>
+<ul>
+<li>Вход. Целые числа <span class="math inline"><em>a</em>, <em>b</em>; 0 &lt; <em>b</em> ≤ <em>a</em></span>.</li>
+<li>Выход: <span class="math inline"><em>d</em>=</span> НОД<span class="math inline">(<em>a</em>,<em>b</em>)</span>; такие целые числа
+<span class="math inline"><em>x</em>, <em>y</em></span>, что <span class="math inline"><em>a</em><em>x</em> + <em>b</em><em>y</em> = <em>d</em></span>.</li>
+</ul>
+<ol type="1">
+<li>Положить <span class="math inline"><em>r</em><sub>0</sub> = <em>a</em>, <em>r</em><sub>1</sub> = <em>b</em>, <em>x</em><sub>0</sub> = 1, <em>x</em><sub>1</sub> = 0, <em>y</em><sub>0</sub> = 0, <em>y</em><sub>1</sub> = 1, <em>i</em> = 1</span></li>
+<li>Разделить с остатком <span class="math inline"><em>r</em><sub><em>i</em></sub>–1</span> на <span class="math inline"><em>r</em><sub><em>i</em></sub></span> : <span class="math inline"><em>r</em><sub>(<em>i</em>–1)</sub> = <em>q</em><sub><em>i</em></sub> * <em>r</em><sub><em>i</em></sub> + <em>r</em><sub><em>i</em></sub> + 1</span></li>
+<li>Если <span class="math inline"><em>r</em><sub>(<em>i</em>+1)</sub> = 0</span>, то
+положить <span class="math inline"><em>d</em> = <em>r</em><sub><em>i</em></sub></span>,
+<span class="math inline"><em>x</em> = <em>x</em><sub><em>i</em></sub></span>,
+<span class="math inline"><em>y</em> = <em>y</em><sub><em>i</em></sub></span>.
+В противном случае положить <span class="math inline"><em>x</em><sub>(<em>i</em>+1)</sub> = (<em>x</em><sub>(<em>i</em>–1)</sub>–<em>q</em><sub><em>i</em></sub> * <em>x</em><sub><em>i</em></sub></span>,
+<span class="math inline"><em>y</em><sub>(<em>i</em>+1)</sub> = <em>y</em><sub>(<em>i</em>–1)</sub>–<em>q</em><sub><em>i</em></sub> * <em>y</em><sub><em>i</em></sub></span>,
+<span class="math inline"><em>i</em> = <em>i</em> + 1</span> и вернуться
+на шаг 2.</li>
+<li>Результат: <span class="math inline"><em>d</em>, <em>x</em>, <em>y</em></span>.</li>
+</ol>
+</section>
+<section id="пример-работы-алгоритма" class="slide level2">
+<h2>Пример работы алгоритма</h2>
+<figure>
+<img data-src="data:image/png;base64,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" id="fig:001" alt="Работа алгоритма" />
+<figcaption aria-hidden="true">Работа алгоритма</figcaption>
+</figure>
+</section></section>
+<section>
+<section id="выводы" class="title-slide slide level1">
+<h1>Выводы</h1>
+
+</section>
+<section id="результаты-выполнения-лабораторной-работы" class="slide level2">
+<h2>Результаты выполнения лабораторной работы</h2>
+<p>Изучили алгоритм Евклида нахождения НОД.</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fdist%2Freveal%2Ejs"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fplugin%2Fnotes%2Fnotes%2Ejs"></script>
+  <script src="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fplugin%2Fsearch%2Fsearch%2Ejs"></script>
+  <script src="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fplugin%2Fzoom%2Fzoom%2Ejs"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

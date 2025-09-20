@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Егорова Екатерина">
+  <title>Разложение чисел на множители</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link href="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fdist%2Freset%2Ecss" rel="stylesheet">
+  <link href="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fdist%2Freveal%2Ecss" rel="stylesheet">
+  <style>
+.reveal .sourceCode { 
+overflow: visible;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <link href="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fdist%2Ftheme%2Fbeige%2Ecss" rel="stylesheet" id="theme">
+  
+  
+  
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Разложение чисел на множители</h1>
+  <p class="author">Егорова Екатерина</p>
+  <p class="institute">Российский Университет Дружбы Народов</p>
+  <p class="date">25 октября, 2025, Москва, Россия</p>
+</section>
+
+<section>
+<section id="цели-и-задачи" class="title-slide slide level1">
+<h1>Цели и задачи</h1>
+
+</section>
+<section id="цель-лабораторной-работы" class="slide level2">
+<h2>Цель лабораторной работы</h2>
+<p>Изучение задачи разложения на множители, изучение p-алгоритма
+Поллрада.</p>
+</section></section>
+<section>
+<section id="выполнение-лабораторной-работы" class="title-slide slide level1">
+<h1>Выполнение лабораторной работы</h1>
+
+</section>
+<section id="задача-разложения-на-простые-множители" class="slide level2">
+<h2>Задача разложения на простые множители</h2>
+<p>Разложение на множители — предмет непрерывного исследования в
+прошлом; и такие же исследования, вероятно, продолжатся в будущем.
+Разложение на множители играет очень важную роль в безопасности
+некоторых криптосистем с открытым ключом.</p>
+</section>
+<section id="p-алгоритм-поллрада" class="slide level2">
+<h2>p-алгоритм Поллрада</h2>
+<ul>
+<li>Вход. Число <span class="math inline"><em>n</em></span>, начальное
+значение <span class="math inline"><em>c</em></span>, функция <span class="math inline"><em>f</em></span>, обладающая сжимающими
+свойствами.</li>
+<li>Выход. Нетривиальный делитель числа <span class="math inline"><em>n</em></span>.</li>
+</ul>
+<ol type="1">
+<li>Положить <span class="math inline"><em>a</em> = <em>c</em>, <em>b</em> = <em>c</em></span></li>
+<li>Вычислить <span class="math inline"><em>a</em> = <em>f</em>(<em>a</em>)(<em>m</em><em>o</em><em>d</em><em>n</em>), <em>b</em> = <em>f</em>(<em>b</em>)(<em>m</em><em>o</em><em>d</em><em>n</em>)</span></li>
+<li>Найти <span class="math inline"><em>d</em> = <em>G</em><em>C</em><em>D</em>(<em>a</em>−<em>b</em>,<em>n</em>)</span></li>
+<li>Если <span class="math inline">1 &lt; <em>d</em> &lt; <em>n</em></span>, то
+положить <span class="math inline"><em>p</em> = <em>d</em></span> и
+результат: <span class="math inline"><em>p</em></span>. При <span class="math inline"><em>d</em> = <em>n</em></span> результат: ДЕЛИТЕЛЬ
+НЕ НАЙДЕН. При <span class="math inline"><em>d</em> = 1</span> вернуться
+на шаг 2.</li>
+</ol>
+</section>
+<section id="оценка-сложности" class="slide level2">
+<h2>Оценка сложности</h2>
+<p>Сложность. Заметим, что этот метод требует сделать <span class="math inline"><em>B</em>–1</span> операций возведения в степень
+<span class="math inline"><em>a</em> = <em>a</em><sup><em>e</em></sup><em>m</em><em>o</em><em>d</em><em>n</em></span>.
+Есть быстрый алгоритм возведения в степень, который выполняет это за
+<span class="math inline">2 * 1<em>o</em><em>g</em><sub>2</sub><em>B</em></span>
+операций. Метод также использует вычисления НОД, который требует <span class="math inline"><em>n</em><sup>3</sup></span> операций. Мы можем
+сказать, что сложность — так или иначе больше, чем <span class="math inline"><em>O</em>(<em>B</em>)</span> или <span class="math inline"><em>O</em>(2<sup><em>n</em></sup>)</span>, где <span class="math inline"><em>n</em><sub><em>b</em></sub></span> — число битов
+в <span class="math inline"><em>B</em></span>. Другая проблема – этот
+алгоритм может заканчиваться сигналом об ошибке. Вероятность успеха
+очень мала, если <span class="math inline"><em>B</em></span> имеет
+значение, не очень близкое к величине <span class="math inline">$\sqrt{n}$</span>.</p>
+</section>
+<section id="пример-работы-алгоритма" class="slide level2">
+<h2>Пример работы алгоритма</h2>
+<figure>
+<img data-src="image/0.png" id="fig:001" alt="Работа алгоритма" />
+<figcaption aria-hidden="true">Работа алгоритма</figcaption>
+</figure>
+</section></section>
+<section>
+<section id="выводы" class="title-slide slide level1">
+<h1>Выводы</h1>
+
+</section>
+<section id="результаты-выполнения-лабораторной-работы" class="slide level2">
+<h2>Результаты выполнения лабораторной работы</h2>
+<p>Изучили задачу разложения на множители и p-алгоритм Поллрада.</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fdist%2Freveal%2Ejs"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fplugin%2Fnotes%2Fnotes%2Ejs"></script>
+  <script src="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fplugin%2Fsearch%2Fsearch%2Ejs"></script>
+  <script src="data:text/plain;charset=UTF-8;charset=utf-8,Not%20found%3A%20%2Freveal%2Ejs%404%2E6%2E1%2F%2Fplugin%2Fzoom%2Fzoom%2Ejs"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
